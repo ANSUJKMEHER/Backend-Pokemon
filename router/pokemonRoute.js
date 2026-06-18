@@ -4,7 +4,7 @@ const { addpokemon, getall, getbyid } = require('../controller/pokemonController
 
 const router = express.Router();
 
-// Configure multer for file uploads
+
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, 'uploads/');
@@ -16,7 +16,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
-// Define pokemon routes
+
 router.post('/add/pokemon', upload.single('image'), addpokemon);
 router.get('/get/pokemon', getall);
 router.get('/get/pokemon/:id', getbyid);

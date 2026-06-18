@@ -1,6 +1,4 @@
 const mongoose = require('mongoose');
-
-// Define the schema for user authentication
 const userSchema = new mongoose.Schema({
     name: {
         type: String

@@ -8,27 +8,17 @@ const authRoute = require('./router/authRouter');
 const app = express();
 const PORT = 3002;
 
-// Middleware to parse incoming JSON requests
 app.use(express.json());
 
-// Connect to the database
 connectDb();
 
-// Register application routes
 app.use('/api/v1', pokemonRoute);
 app.use('/auth', authRoute);
 
-// Basic health check route
 app.get('/', (req, res) => {
     res.send('Server is working');
 });
 
-/**
- * Pokemon Routes (Directly in index.js)
- * Note: These could ideally be moved to pokemonController/pokemonRoute.
- */
-
-// Update pokemon data
 app.put('/update/pokemon/:id', async (req, res) => {
     try {
         const pokemon = await Pokemon.findByIdAndUpdate(
@@ -56,7 +46,6 @@ app.put('/update/pokemon/:id', async (req, res) => {
     }
 });
 
-// Delete a pokemon
 app.delete('/del/pokemon/:id', async (req, res) => {
     try {
         const pokemon = await Pokemon.findByIdAndDelete(req.params.id);
@@ -76,7 +65,6 @@ app.delete('/del/pokemon/:id', async (req, res) => {
     }
 });
 
-// Start the Express server
 app.listen(PORT, () => {
     console.log(`Server started and listening on port ${PORT}`);
 });

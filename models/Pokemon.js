@@ -1,6 +1,4 @@
 const mongoose = require('mongoose');
-
-// Define the schema for Pokemon details
 const pokemonSchema = new mongoose.Schema({
     name: {
         type: String

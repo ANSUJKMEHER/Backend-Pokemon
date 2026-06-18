@@ -1,16 +1,12 @@
 const Pokemon = require('../models/Pokemon');
 
-/**
- * Adds a new pokemon to the database.
- * Expects pokemon details in the request body and an image file.
- */
 exports.addpokemon = async (req, res) => {
     try {
         const pokemon = await Pokemon.create({
             name: req.body.name,
             level: req.body.level,
             description: req.body.description,
-            image: req.file.path // Image path from multer
+            image: req.file.path 
         });
 
         res.status(201).json({
@@ -25,9 +21,6 @@ exports.addpokemon = async (req, res) => {
     }
 };
 
-/**
- * Retrieves all pokemon from the database.
- */
 exports.getall = async (req, res) => {
     try {
         const pokemonList = await Pokemon.find();
@@ -43,9 +36,6 @@ exports.getall = async (req, res) => {
     }
 };
 
-/**
- * Retrieves a single pokemon by its ID.
- */
 exports.getbyid = async (req, res) => {
     try {
         const pokemon = await Pokemon.findById(req.params.id);
